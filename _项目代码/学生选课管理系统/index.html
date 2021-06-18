@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- INITIALIZATOION / 初始化 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- END OF INIT -->
+
+    <!-- TITLE OF SITE / 网站标题 -->
+    <title>学生信息管理系统</title>
+    <!-- ICON OF SITE / 小图标 -->
+    <link rel="icon" href="images/SDU-ico.ico">
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 设定样式 -->
+    <style>
+        body {
+            background-image: url('images/SDU-background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #loginOuter {
+            border-radius: 20px;
+            padding: 10px;
+            background: rgb(156, 12, 19);
+            position: fixed;
+            top: 32%;
+            left: 32%;
+            width: 36%;
+            height: auto;
+        }
+
+        #loginInner {
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+
+    <!-- 设定函数 -->
+    <script>
+        function Login() {
+            var userID = $("#userID_input").val();
+            var userPWD = $("#userPWD_input").val();
+            var str = { "userID": userID, "userPWD": userPWD };
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8000/api/LoginServlet/",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(str),
+                dataType: "JSON",                
+                success: function (rtn) {
+                    if (rtn.status == "ERROR") {
+                        alert("登录失败" + rtn.msg);
+                    }
+                    else {
+                        var status = rtn.status;
+                        sessionStorage.setItem("userID", userID);
+                        sessionStorage.setItem("status", status);
+                        var hrefnow = "html-" + status + "/home.html";
+                        window.location.href = hrefnow;
+                    }
+                },
+                error: function () {
+                    alert("Login Error");
+
+                }
+            });
+            /*
+            //测试
+            var hrefnow = "html-tea/home.html";
+            window.location.href = hrefnow;
+            //END
+            */
+        }
+    </script>
+</head>
+<body>
+
+    <section id="bodyer" class="text-center" style="color:rgb(156, 12, 19)">
+        <!-- 校徽 -->
+        <div style="margin-top:5em">
+            <a href="http://www.sdu.edu.cn/">
+                <img width="256" height="256" class="img-circle" alt="Load Fail" src="images/SDU-logo.png">
+            </a>
+        </div>
+        <!-- 标题 -->
+        <div style="margin-top:3em">
+            <h1 style="font-size:3em; letter-spacing:.3em;">学生信息管理系统</h1>
+        </div>
+        <!-- 登录按钮 -->
+        <div style="margin-top:3em">
+            <button type="button" class="btn btn-danger btn-lg" onclick="getElementById('loginOuter').style.display=''">
+                <span>登录</span>
+            </button>
+        </div>
+        <!-- 弹出登录框 -->
+        <div id="loginOuter" style="display: none;">
+            <div id="loginInner" class="alert-danger">
+                <button type="button" class="close" onclick="getElementById('loginOuter').style.display='none'">
+                    <span>&times;</span>
+                </button>
+                <div>
+                    <strong style="font-size:1.5em">
+                        <span>学生信息管理系统</span>
+                    </strong>
+                </div>
+                <br>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" id="userID_tip">
+                        <span>学号</span>
+                    </span>
+                    <input id="userID_input" type="text" class="form-control" placeholder="学号/教职工号" aria-describedby="userID_tip">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon" id="userPWD_tip">
+                        <span>密码</span>
+                    </span>
+                    <input id="userPWD_input" type="password" class="form-control" placeholder="初始密码身份证号后八位" aria-describedby="userPWD_tip">
+                </div>
+                <br>
+                <br>
+                <button type="button" class="btn btn-danger btn-mid" onclick="Login()">
+                    <span>登录</span>
+                </button>
+                <br>
+                <!-- 向后台提交登录信息 -->
+            </div>
+        </div>
+
+    </section>
+
+    <section id="footer"></section>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿
+/*bodyer 主体内容*/
+ /*主体位置设定*/
+.bodyerOuter {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-top: 100px;
+    margin-left: 18%;
+    width: 80%;
+    min-width: 360px;
+    border-radius: 10px;
+}
+
+/*table 表格*/
+/*表格背景*/
+.tableBackground {
+    background: rgba(255, 255, 255, 0.5);
+}
+    .tableBackground > tbody > tr:hover {
+        background: rgba(246, 212, 219, 0.5);
+    }
+
+/*row-col 栅格表*/
+/*栅格表 标题*/
+.grid-title {
+    margin: 25px 25px 25px 25px;
+    /*上 右 下 左*/
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: left;
+}
+/*栅格表 标签*/
+.grid-lab {
+    margin: 10px 0px 10px 20px;
+    /*上 右 下 左*/
+    padding: 5px;
+    background: rgba(246, 212, 219, 0.8);
+    border-radius: 20px 0px 0px 20px;
+    font-weight: bold;
+    text-align: center;
+}
+/*栅格表 内容*/
+.grid-det {
+    margin: 10px 20px 10px 0px;
+    /*上 右 下 左*/
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0px 20px 20px 0px;
+    text-align: center;
+}
+/*栅格表 空*/
+.grid-null {
+    margin: 10px 10px 10px 10px;
+    /*上 右 下 左*/
+    padding: 5px;
+}
+.grid-submit {
+    margin: 20px 20px 20px 20px;
+    /*上 右 下 左*/
+    padding: 5px;
+    background: rgba(156, 12, 19, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px 20px 20px 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*navigation 标签栏/导航栏*/
+/*navigation 边框附加类*/
+ /*顶标签栏*/
+.navUpper {
+    padding: 20px;
+    background: rgb(156, 12, 19);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 500px;
+}
+ /*左侧标签栏*/
+.navLefter {
+    padding: 20px;
+    background: rgb(186, 52, 59);
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: 90%;
+    width: 16%;
+    min-width: 120px;
+    border-radius: 0px 30px 30px 0px;
+}
+/*navigation 重置颜色*/
+.nav-pills > li.nav-active > a,
+.nav-pills > li.nav-active > a:hover,
+.nav-pills > li.nav-active > a:focus {
+    background: rgb(255, 255, 255);
+    color: rgb(156, 12, 19);
+}
+.nav-pills > li.nav-inactive > a {
+    color: rgb(255, 255, 255);
+}
+.nav-pills > li.nav-inactive > a:hover,
+.nav-pills > li.nav-inactive > a:focus {
+    background: rgb(255, 255, 255);
+    color: rgb(156, 12, 19);
+}
+/*dropdown-menu 重置颜色*/
+.dropdown-menu > li > a.list-inactive {
+    color: rgb(186, 52, 59);
+}
+.dropdown-menu > li > a.list-active {
+    background: rgb(246, 212, 219);
+    color: rgb(156, 12, 19);
+}
